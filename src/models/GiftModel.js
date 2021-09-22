@@ -2,14 +2,16 @@ const connection = require('../config/connection')
 
 class GiftModel {
    add(gift) {
+      const createDate = new Date()
+      const Giftdated = {...gift, createDate}
       const sql = 'INSERT INTO Gifts SET ?'
 
                   //query   body
-      connection.query(sql, gift, (error, results) => {
+      connection.query(sql, Giftdated, (error, results) => {
          if(error) {
-            console.log(error)
+            results.status(400).json(error)
          } else {
-            console.log(results)
+            results.status(201).json(results)
          }
       })
    }
