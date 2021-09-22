@@ -6,7 +6,7 @@ class GiftTable {
    }
 
    createGifts() {
-      const sql = 'CREATE TABLE IF NOT EXISTS Gifts (id int NOT NULL AUTO_INCREMENT, description text NOT NULL, site varchar(50), price int NOT NULL, PRIMARY KEY(id))'
+      const sql = 'CREATE TABLE IF NOT EXISTS Gifts (id int NOT NULL AUTO_INCREMENT, name varchar(50) NOT NULL, description text NOT NULL, site text, price numeric NOT NULL, PRIMARY KEY(id))'
 
       this.connection.query(sql, (error) => {
          if(error) {
